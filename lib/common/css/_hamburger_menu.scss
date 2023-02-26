@@ -1,0 +1,361 @@
+@use "sass:math";
+@use "../../../../jquery.common/css/base/mixin" as *;
+
+// ----------------------------------------------------------------------------
+// Hamburger Menu
+// ----------------------------------------------------------------------------
+// --------------------------------------
+// button
+// --------------------------------------
+// Button size related
+$btn_with: 50px;
+$btn_height: 50px;
+
+// Button line related
+$btn_line_width: 60%;
+$btn_line_height: 1px;
+
+// Button color related
+$btn_color: #716e77;
+$btn_line_color: #ffffff;
+
+.hamburger_menu_btn {
+  display: block;
+  position: relative;
+  background-color: $btn_color;
+  width: $btn_with;
+  padding: math.div($btn_height, 2) 0;
+  cursor: pointer;
+
+
+  &.is_fixed{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 4;
+  }
+
+  .btn_ttl{
+    display: none;
+  }
+
+  span[class^="btn_line"]{
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $btn_line_color;
+    width: $btn_line_width;
+    height: $btn_line_height;
+  }
+
+  .btn_line_top {
+    top: 30%;
+  }
+
+  .btn_line_center {
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .btn_line_bottom {
+    bottom: 30%;
+  }
+
+
+  // --------------------------------------
+  // Animation when closed
+  // --------------------------------------
+  .btn_line_top {
+    animation: btn_line_top 0.75s forwards;
+    @keyframes btn_line_top {
+      0% {
+        top: calc(50% - (#{$btn_line_height} / 2));
+        transform: rotate(45deg);
+      }
+      50% {
+        top: calc(50% - (#{$btn_line_height} / 2));
+        transform: rotate(0);
+      }
+      100% {
+        top: 30%;
+        transform: rotate(0);
+      }
+    }
+  }
+
+  .menu_btn_middle {
+    transition: all 0.25s 0.25s;
+    opacity: 1;
+  }
+
+  .btn_line_bottom {
+    animation: btn_line_bottom 0.75s forwards;
+    @keyframes btn_line_bottom {
+      0% {
+        bottom: calc(50% - (#{$btn_line_height} / 2));
+        transform: rotate(-45deg);
+      }
+      50% {
+        bottom: calc(50% - (#{$btn_line_height} / 2));
+        transform: rotate(0);
+      }
+      100% {
+        bottom: 30%;
+        transform: rotate(0);
+      }
+    }
+  }
+
+  // --------------------------------------
+  // Animation when menu opened
+  // --------------------------------------
+  &.is_opened {
+    .btn_line_top {
+      animation: opened_btn_line_top 0.75s forwards;
+      @keyframes opened_btn_line_top {
+        0% {
+          top: 30%;
+          transform: rotate(0);
+        }
+        50% {
+          top: calc(50% - (#{$btn_line_height} / 2));
+          transform: rotate(0);
+        }
+        100% {
+          top: calc(50% - (#{$btn_line_height} / 2));
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .btn_line_center {
+      opacity: 0;
+    }
+
+    .btn_line_bottom {
+      animation: opened_btn_line_bottom 0.75s forwards;
+      @keyframes opened_btn_line_bottom {
+        0% {
+          bottom: 30%;
+          transform: rotate(0);
+        }
+        50% {
+          bottom: calc(50% - (#{$btn_line_height} / 2));
+          transform: rotate(0);
+        }
+        100% {
+          bottom: calc(50% - (#{$btn_line_height} / 2));
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+
+// --------------------------------------
+// canvas
+// --------------------------------------
+// Canvas size related
+$canvas_width: 80%;
+$canvas_max_width: 600px;
+$canvas_height: 100vh;
+
+// Canvas color related
+$canvas_bg: #ccc;
+$menu_off_canvas_color: rgba(#000, 0.7);
+
+#hamburger_menu_canvas {
+
+  .layout_inner{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    background-color: $menu_off_canvas_color;
+
+    .layout_container{
+      position: absolute;
+      top: 0;
+      background-color: $canvas_bg;
+      max-width: $canvas_max_width;
+      width: $canvas_width;
+      height: $canvas_height;
+      cursor: default;
+
+      .layout_width{
+        padding: 30px;
+      }
+    }
+  }
+
+  &.is_scrollable{
+    .layout_inner{
+      .layout_container{
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  // --------------------------------------
+  // Animation fade in
+  // --------------------------------------
+  &.is_preloaded{
+    .layout_inner{
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+  }
+  &.is_opened {
+    .layout_inner{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+
+  // --------------------------------------
+  // Animation fade in
+  // --------------------------------------
+  &[data-modal-canvas-in="fade_in"] {
+    .layout_container {
+
+      top: 50%;
+      left: 0;
+      left: 50%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -50%);
+      height: calc(100vh - 60px);
+      will-change: transform, opacity, visibility;
+
+      @include only_safari{
+        height: calc(100svh - 60px);
+      }
+    }
+
+    &.is_preloaded{
+      .layout_container {
+        transition: opacity 0.2s, visibility 0.2s;
+      }
+    }
+
+    &.is_opened {
+      .layout_container {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0.3s;
+      }
+    }
+  }
+
+  // --------------------------------------
+  // Animation slide in from top
+  // --------------------------------------
+  &[data-modal-canvas-in="slide_from_top"] {
+    .layout_container {
+      right: 0;
+      left: 0;
+      transform: translateY(-100%);
+      height: calc(100vh - 60px);
+      margin-right: auto;
+      margin-left: auto;
+      will-change: translateY(30px);
+    }
+
+    &.is_preloaded{
+      .layout_container {
+        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    &.is_opened {
+      .layout_container {
+        transform: translateY(30px);
+        transition-delay: 0.3s;
+      }
+    }
+  }
+
+  // --------------------------------------
+  // Animation slide in from left
+  // --------------------------------------
+  &[data-modal-canvas-in="slide_from_left"] {
+    .layout_container {
+      left: 0;
+      transform: translateX(-100%);
+      will-change: translateX(0);
+
+      .layout_width{
+        padding: 30px;
+      }
+    }
+
+    &.is_preloaded{
+      .layout_container {
+        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    &.is_opened {
+      .layout_container {
+        transform: translateX(0);
+        transition-delay: 0.3s;
+      }
+    }
+  }
+
+
+
+  // --------------------------------------
+  // Animation slide in from right
+  // --------------------------------------
+  &[data-modal-canvas-in="slide_from_right"] {
+    .layout_container {
+      right: 0;
+      transform: translateX(100%);
+      will-change: translateX(0);
+    }
+
+    &.is_preloaded{
+      .layout_container {
+        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    &.is_opened {
+      .layout_container {
+        transform: translateX(0);
+        transition-delay: 0.3s;
+      }
+    }
+  }
+
+
+  // --------------------------------------
+  // Close Button
+  // --------------------------------------
+  .hamburger_menu_btn{
+
+    &.btn_close{
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+
+      span[class^="btn_line"]{
+        background-color: #333;
+        height: 2px;
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link
+      rel="stylesheet"
+      href="/jquery.common/css/style.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/jquery.accordion/lib/common/css/style.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../lib/common/css/style.css"
+      type="text/css"
+      media="all"
+    />
+
+    <title>jQuery.hamburger_menu</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <div id="template_ttl" class="page_layout layout1">
+          <div class="layout_inner">
+            <div class="layout_container">
+              <div class="layout_width">
+                <h1 class="ttl_page">Fade in jQuery Hamburger Menu</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section id="template_header" class="page_layout layout1 header_fix">
+          <div class="layout_inner">
+            <div class="layout_container">
+              <div class="layout_width">
+                <div class="header_content">
+                  <p class="header_logo">LOGO</p>
+
+                  <nav id="hamburger_menu" role="navigation">
+                    <!--jqueryModal.js button ここから-->
+                    <button
+                      type="button"
+                      class="hamburger_menu_btn"
+                      data-modal-canvas="#hamburger_menu_canvas"
+                      data-modal-open-state-class="false"
+                      data-focus-trap-last="#hamburger_menu_canvas a, #hamburger_menu_canvas button"
+                      aria-controls="hamburger_menu_canvas"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                    >
+                      <span class="btn_ttl">メニューを開く</span>
+                      <span class="btn_line_top"></span>
+                      <span class="btn_line_center"></span>
+                      <span class="btn_line_bottom"></span>
+                    </button>
+                    <!--jqueryModal.js button ここまで-->
+                    <!--jqueryModal.js canvas ここから-->
+                    <div
+                      id="hamburger_menu_canvas"
+                      class="page_layout layout2"
+                      data-modal-canvas-in="fade_in"
+                    >
+                      <div class="layout_inner">
+                        <div class="layout_container">
+                          <div class="layout_width">
+                            <div
+                              id="nav_hamburger_menu"
+                              class="canvas_nav"
+                            ></div>
+                            <!--jqueryModal.js button ここから-->
+                            <button
+                              type="button"
+                              class="hamburger_menu_btn btn_close is_opened"
+                              data-modal-canvas="#hamburger_menu_canvas"
+                              data-modal-open-state-class="false"
+                              aria-controls="hamburger_menu_canvas"
+                              aria-expanded="false"
+                              aria-haspopup="true"
+                            >
+                              <span class="btn_ttl">メニューを開く</span>
+                              <span class="btn_line_top"></span>
+                              <span class="btn_line_center"></span>
+                              <span class="btn_line_bottom"></span>
+                            </button>
+                            <!--jqueryModal.js button ここまで-->
+                            <div
+                              data-focus-trap-first="#hamburger_menu_canvas a, #hamburger_menu_canvas button"
+                              tabindex="0"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--jqueryModal.js canvas ここまで-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </header>
+      <main>
+        <div id="content_block"></div>
+      </main>
+      <footer></footer>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="/jquery.common/js/template/content_block.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/jquery.common/js/template/nav.js"
+    ></script>
+    <script type="text/javascript" src="../../lib/common/js/nav.js"></script>
+
+    <script
+      type="text/javascript"
+      src="/body-scroll-lock/lib/bodyScrollLock.js"
+    ></script>
+
+    <script type="text/javascript" src="/jquery.common/js/jquery.js"></script>
+    <script
+      type="text/javascript"
+      src="../../lib/common/js/jquery.organizeContentsArray.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../lib/common/js/jqueryModal.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/jquery-smooth-scroll/jquery.smooth-scroll.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/jquery.accordion/lib/common/js/scripts.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/jquery.scroll_event/lib/js/scripts.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="../../lib/common/js/scripts.js"
+    ></script>
+  </body>
+</html>

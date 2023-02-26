@@ -1,0 +1,39 @@
+[
+  {
+    "text" : "Hamburger menu / Fixed / Fade",
+    "url" : "/jquery.hamburger_menu/demo/fixed/fade.html"
+  },{
+    "text" : "Hamburger menu / Fixed / Slide from left",
+    "url" : "/jquery.hamburger_menu/demo/fixed/slide_from_left.html"
+  },{
+    "text" : "Hamburger menu / Fixed / Slide from right",
+    "url" : "/jquery.hamburger_menu/demo/fixed/slide_from_right.html"
+  },{
+    "text" : "Hamburger menu / Fixed / Slide from top",
+    "url" : "/jquery.hamburger_menu/demo/fixed/slide_from_top.html"
+  },{
+    "text" : "Hamburger menu / Header fixed / Fade",
+    "url" : "/jquery.hamburger_menu/demo/header_fixed/fade.html"
+  },{
+    "text" : "Hamburger menu / Header fixed / Slide from left",
+    "url" : "/jquery.hamburger_menu/demo/header_fixed/slide_from_left.html"
+  },{
+    "text" : "Hamburger menu / Header fixed / Slide from right",
+    "url" : "/jquery.hamburger_menu/demo/header_fixed/slide_from_right.html"
+  },{
+    "text" : "Hamburger menu / Header fixed / Slide from top",
+    "url" : "/jquery.hamburger_menu/demo/header_fixed/slide_from_top.html"
+  },{
+    "text" : "Hamburger menu / Static / Fade",
+    "url" : "/jquery.hamburger_menu/demo/static/fade.html"
+  },{
+    "text" : "Hamburger menu / Static / Slide from left",
+    "url" : "/jquery.hamburger_menu/demo/static/slide_from_left.html"
+  },{
+    "text" : "Hamburger menu / Static / Slide from right",
+    "url" : "/jquery.hamburger_menu/demo/static/slide_from_right.html"
+  },{
+    "text" : "Hamburger menu / Static / Slide from top",
+    "url" : "/jquery.hamburger_menu/demo/static/slide_from_top.html"
+  }
+]
