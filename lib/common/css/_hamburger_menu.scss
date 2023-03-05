@@ -263,7 +263,7 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // --------------------------------------
   // Animation fade in
   // --------------------------------------
-  &[data-modal-canvas-in="fade_in"] {
+  &[data-hamburger-menu-canvas-in="fade_in"] {
     .layout_container {
 
       top: 50%;
@@ -298,7 +298,7 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // --------------------------------------
   // Animation slide in from top
   // --------------------------------------
-  &[data-modal-canvas-in="slide_from_top"] {
+  &[data-hamburger-menu-canvas-in="slide_from_top"] {
     .layout_container {
       right: 0;
       left: 0;
@@ -326,7 +326,7 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // --------------------------------------
   // Animation slide in from left
   // --------------------------------------
-  &[data-modal-canvas-in="slide_from_left"] {
+  &[data-hamburger-menu-canvas-in="slide_from_left"] {
     .layout_container {
       left: 0;
       transform: translateX(-100%);
@@ -356,7 +356,7 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // --------------------------------------
   // Animation slide in from right
   // --------------------------------------
-  &[data-modal-canvas-in="slide_from_right"] {
+  &[data-hamburger-menu-canvas-in="slide_from_right"] {
     .layout_container {
       right: 0;
       transform: translateX(100%);
