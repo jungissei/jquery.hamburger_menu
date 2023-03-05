@@ -2,6 +2,43 @@
 @use "../../../../jquery.common/css/base/mixin" as *;
 
 // ----------------------------------------------------------------------------
+// Template Header (header fixed)
+// ----------------------------------------------------------------------------
+#template_header{
+  &.header_fix{
+    .layout_inner{
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .header_content{
+      display: flex;
+      align-items: center;
+
+      .header_logo{
+        font-weight: bold;
+        font-size: 25px;
+      }
+
+      #hamburger_menu{
+        margin-left: auto;
+      }
+    }
+
+    &.is_fixed{
+      > .layout_inner{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ecd6c7;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Hamburger Menu
 // ----------------------------------------------------------------------------
 // --------------------------------------
