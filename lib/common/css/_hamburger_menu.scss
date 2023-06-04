@@ -63,6 +63,7 @@ $btn_line_color: #ffffff;
   width: $btn_with;
   padding: math.div($btn_height, 2) 0;
   cursor: pointer;
+  overflow: hidden;
 
 
   &.is_fixed{
@@ -73,7 +74,9 @@ $btn_line_color: #ffffff;
   }
 
   .btn_ttl{
-    display: none;
+    position: absolute;
+    top: -200%;
+    left: -200%;
   }
 
   span[class^="btn_line"]{
@@ -198,65 +201,57 @@ $btn_line_color: #ffffff;
 // --------------------------------------
 // canvas
 // --------------------------------------
-// Canvas size related
-$canvas_width: 80%;
-$canvas_max_width: 600px;
-$canvas_height: 100vh;
-
-// Canvas color related
-$canvas_bg: #ccc;
-$menu_off_canvas_color: rgba(#000, 0.7);
-
 #hamburger_menu_canvas {
 
+  // Canvas size related
+  $canvas_width: 80%;
+  $canvas_max_width: 600px;
+  $canvas_height: 100vh;
+
+  // Canvas color related
+  $canvas_bg: #ccc;
+  $menu_off_canvas_color: rgba(#000, 0.7);
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: $menu_off_canvas_color;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  will-change: opacity, visibility;
+
   .layout_inner{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 5;
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
     cursor: pointer;
-    background-color: $menu_off_canvas_color;
 
     .layout_container{
-      position: absolute;
-      top: 0;
-      background-color: $canvas_bg;
-      max-width: $canvas_max_width;
-      width: $canvas_width;
-      height: $canvas_height;
-      cursor: default;
+      cursor: pointer;
 
       .layout_width{
-        padding: 30px;
+        cursor: pointer;
       }
     }
   }
 
-  &.is_scrollable{
-    .layout_inner{
-      .layout_container{
-        overflow-y: scroll;
-      }
-    }
+  .canvas_box{
+    padding: 30px 0;
+    background-color: $canvas_bg;
+    cursor: default;
   }
 
-  // --------------------------------------
-  // Animation fade in
-  // --------------------------------------
-  &.is_preloaded{
-    .layout_inner{
-      transition: opacity 0.2s, visibility 0.2s;
-    }
-  }
+
+  // 開閉共通スタイル
   &.is_opened {
-    .layout_inner{
-      opacity: 1;
-      visibility: visible;
-    }
+    opacity: 1;
+    visibility: visible;
   }
 
 
@@ -264,33 +259,29 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // Animation fade in
   // --------------------------------------
   &[data-hamburger-menu-canvas-in="fade_in"] {
-    .layout_container {
 
-      top: 50%;
-      left: 0;
-      left: 50%;
+    .canvas_box{
+      padding: 45px 15px;
+      width: 100%;
+      max-width: 600px;
+      margin-right: auto;
+      margin-left: auto;
+      max-height: calc(100vh - 60px);
       opacity: 0;
       visibility: hidden;
-      transform: translate(-50%, -50%);
-      height: calc(100vh - 60px);
-      will-change: transform, opacity, visibility;
+      transition-delay: 0.3s;
+      transition: opacity 0.2s, visibility 0.2s;
+      will-change: opacity, visibility;
 
       @include only_safari{
-        height: calc(100svh - 60px);
-      }
-    }
-
-    &.is_preloaded{
-      .layout_container {
-        transition: opacity 0.2s, visibility 0.2s;
+        max-height: calc(100svh - 60px);
       }
     }
 
     &.is_opened {
-      .layout_container {
+      .canvas_box{
         opacity: 1;
         visibility: visible;
-        transition-delay: 0.3s;
       }
     }
   }
@@ -299,26 +290,31 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // Animation slide in from top
   // --------------------------------------
   &[data-hamburger-menu-canvas-in="slide_from_top"] {
-    .layout_container {
-      right: 0;
-      left: 0;
-      transform: translateY(-100%);
-      height: calc(100vh - 60px);
+
+    .canvas_box{
+      padding: 45px 15px;
+      width: 100%;
+      max-width: 600px;
       margin-right: auto;
       margin-left: auto;
-      will-change: translateY(30px);
-    }
+      max-height: calc(100vh - 60px);
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 0.3s;
+      transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.2s, transform 0.2s;
+      will-change: opacity, visibility, transform;
+      transform: translateY(-30px);
 
-    &.is_preloaded{
-      .layout_container {
-        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      @include only_safari{
+        max-height: calc(100svh - 60px);
       }
     }
 
     &.is_opened {
-      .layout_container {
-        transform: translateY(30px);
-        transition-delay: 0.3s;
+      .canvas_box{
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -327,24 +323,32 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // Animation slide in from left
   // --------------------------------------
   &[data-hamburger-menu-canvas-in="slide_from_left"] {
-    .layout_container {
+
+    .canvas_box{
+      position: fixed;
+      top: 0;
       left: 0;
+      padding: 45px 15px;
+      width: 100%;
+      max-width: 600px;
+      transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),opacity 0.2s, visibility 0.2s;
       transform: translateX(-100%);
-      will-change: translateX(0);
+      will-change: opacity, visibility, transform;
+      max-height: 100vh;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
 
-      .layout_width{
-        padding: 30px;
-      }
-    }
 
-    &.is_preloaded{
-      .layout_container {
-        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      @include only_safari{
+        max-height: 100svh;
       }
     }
 
     &.is_opened {
-      .layout_container {
+      .canvas_box{
+        opacity: 1;
+        visibility: visible;
         transform: translateX(0);
         transition-delay: 0.3s;
       }
@@ -357,20 +361,31 @@ $menu_off_canvas_color: rgba(#000, 0.7);
   // Animation slide in from right
   // --------------------------------------
   &[data-hamburger-menu-canvas-in="slide_from_right"] {
-    .layout_container {
+    .canvas_box{
+      position: fixed;
+      top: 0;
       right: 0;
+      padding: 45px 15px;
+      width: 100%;
+      max-width: 600px;
+      transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),opacity 0.2s, visibility 0.2s;
       transform: translateX(100%);
-      will-change: translateX(0);
-    }
+      will-change: opacity, visibility, transform;
+      max-height: 100vh;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
 
-    &.is_preloaded{
-      .layout_container {
-        transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      @include only_safari{
+        max-height: 100svh;
       }
     }
 
     &.is_opened {
-      .layout_container {
+      .canvas_box{
+        opacity: 1;
+        visibility: visible;
         transform: translateX(0);
         transition-delay: 0.3s;
       }

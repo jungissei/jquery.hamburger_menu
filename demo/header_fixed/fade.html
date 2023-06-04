@@ -1,154 +1,131 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
-    <link
-      rel="stylesheet"
-      href="/jquery.common/css/style.css"
-      type="text/css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="/jquery.accordion/lib/common/css/style.css"
-      type="text/css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../lib/common/css/style.css"
-      type="text/css"
-      media="all"
-    />
 
-    <title>jQuery.hamburger_menu</title>
-  </head>
-  <body>
-    <div id="wrapper">
-      <header>
-        <div id="template_ttl" class="page_layout layout1">
-          <div class="layout_inner">
-            <div class="layout_container">
-              <div class="layout_width">
-                <h1 class="ttl_page">Fade in jQuery Hamburger Menu</h1>
-              </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/jquery.common/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/jquery.accordion/lib/common/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="../../lib/common/css/style.css" type="text/css" media="all">
+
+  <title>Fade in / header fixed / jQuery.hamburger_menu</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <div id="template_ttl" class="page_layout layout1">
+        <div class="layout_inner">
+          <div class="layout_container">
+            <div class="layout_width">
+              <h1 class="ttl_page">Fade in / header fixed / jQuery.hamburger_menu</h1>
             </div>
           </div>
         </div>
-        <section id="template_header" class="page_layout layout1 header_fix">
-          <div class="layout_inner">
-            <div class="layout_container">
-              <div class="layout_width">
-                <div class="header_content">
-                  <p class="header_logo">LOGO</p>
+      </div>
+      <div id="template_header" class="page_layout layout1 header_fix">
+        <div class="layout_inner">
+          <div class="layout_container">
+            <div class="layout_width">
+              <div class="header_content">
+                <p class="header_logo">LOGO</p>
 
-                  <nav id="hamburger_menu" role="navigation">
-                    <!--jqueryHamburgerMenu.js button ここから-->
-                    <button
-                      type="button"
-                      class="hamburger_menu_btn"
-                      data-hamburger-menu-canvas="#hamburger_menu_canvas"
-                      data-hamburger-menu-open-state-class="false"
-                      data-focus-trap-last="#hamburger_menu_canvas a, #hamburger_menu_canvas button"
-                      aria-controls="hamburger_menu_canvas"
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                    >
-                      <span class="btn_ttl">メニューを開く</span>
-                      <span class="btn_line_top"></span>
-                      <span class="btn_line_center"></span>
-                      <span class="btn_line_bottom"></span>
-                    </button>
-                    <!--jqueryHamburgerMenu.js button ここまで-->
-                    <!--jqueryHamburgerMenu.js canvas ここから-->
-                    <div
-                      id="hamburger_menu_canvas"
-                      class="page_layout layout2"
-                      data-hamburger-menu-canvas-in="fade_in"
-                    >
-                      <div class="layout_inner">
-                        <div class="layout_container">
-                          <div class="layout_width">
-                            <div
-                              id="nav_hamburger_menu"
-                              class="canvas_nav"
-                            ></div>
+                <div id="hamburger_menu">
+                  <!--jqueryHamburgerMenu.js button ここから-->
+                  <button type="button" class="hamburger_menu_btn" data-hamburger-menu-canvas="#hamburger_menu_canvas"
+                    data-hamburger-menu-open-state-class="false" aria-controls="hamburger_menu_canvas_box"
+                    aria-expanded="false">
+                    <span class="btn_ttl">メニューを開く</span>
+                    <span class="btn_line_top"></span>
+                    <span class="btn_line_center"></span>
+                    <span class="btn_line_bottom"></span>
+                  </button>
+                  <!--jqueryHamburgerMenu.js button ここまで-->
+                  <!--jqueryHamburgerMenu.js canvas ここから-->
+                  <div id="hamburger_menu_canvas" class="page_layout layout1" data-hamburger-menu-canvas-in="fade_in">
+                    <div class="layout_inner">
+                      <div class="layout_container">
+                        <div class="layout_width">
+
+
+                          <div data-modal-focus-trap-first tabindex="0"></div>
+
+                          <div id="hamburger_menu_canvas_box" class="canvas_box" data-simplebar
+                            data-simplebar-auto-hide="false">
+
+
+                            <div id="nav_hamburger_menu" class="canvas_nav">
+                              <div class="block_menu">
+                                <div class="menu_item item_link link_arrow_bar_right">
+                                  <a href="/jquery.hamburger_menu/demo/fixed/fade.html#block_content1"
+                                    class="item_anchor">ページ内リンク
+                                    / Content No.1</a>
+                                </div>
+                                <div class="menu_item item_link link_arrow_bar_right">
+                                  <a href="/jquery.hamburger_menu/demo/fixed/fade.html#block_content2"
+                                    class="item_anchor">ページ内リンク
+                                    / Content No.2</a>
+                                </div>
+                                <div class="menu_item item_link link_arrow_bar_right">
+                                  <a href="/jquery.hamburger_menu/demo/fixed/fade.html#block_content3"
+                                    class="item_anchor">ページ内リンク
+                                    / Content No.3</a>
+                                </div>
+                              </div>
+                            </div>
                             <!--jqueryHamburgerMenu.js button ここから-->
-                            <button
-                              type="button"
-                              class="hamburger_menu_btn btn_close is_opened"
+                            <button type="button" class="hamburger_menu_btn btn_close is_opened"
                               data-hamburger-menu-canvas="#hamburger_menu_canvas"
-                              data-hamburger-menu-open-state-class="false"
-                              aria-controls="hamburger_menu_canvas"
-                              aria-expanded="false"
-                              aria-haspopup="true"
-                            >
+                              data-hamburger-menu-open-state-class="false" aria-controls="hamburger_menu_canvas_box"
+                              aria-expanded="false">
                               <span class="btn_ttl">メニューを閉じる</span>
                               <span class="btn_line_top"></span>
                               <span class="btn_line_center"></span>
                               <span class="btn_line_bottom"></span>
                             </button>
                             <!--jqueryHamburgerMenu.js button ここまで-->
-                            <div
-                              data-focus-trap-first="#hamburger_menu_canvas a, #hamburger_menu_canvas button"
-                              tabindex="0"
-                            ></div>
+
                           </div>
+
+                          <div data-modal-focus-trap-last tabindex="0"></div>
+
                         </div>
                       </div>
                     </div>
-                    <!--jqueryHamburgerMenu.js canvas ここまで-->
-                  </nav>
+                  </div>
+                  <!--jqueryHamburgerMenu.js canvas ここまで-->
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </header>
-      <main>
-        <div id="content_block"></div>
-      </main>
-      <footer></footer>
-    </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="content_block"></div>
+    </main>
+    <footer></footer>
+  </div>
 
-    <script
-      type="text/javascript"
-      src="/jquery.common/js/template/content_block.js"
-    ></script>
+  <script defer src="/jquery.common/js/template/content_block.js"></script>
 
-    <script
-      type="text/javascript"
-      src="/body-scroll-lock/lib/bodyScrollLock.js"
-    ></script>
+  <script defer src="/body-scroll-lock/lib/bodyScrollLock.js"></script>
 
-    <script type="text/javascript" src="/jquery.common/js/jquery.js"></script>
-    <script
-      type="text/javascript"
-      src="../../lib/common/js/jquery.organizeContentsArray.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../../lib/common/js/jquery.HamburgerMenu.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="/jquery-smooth-scroll/jquery.smooth-scroll.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="/jquery.accordion/lib/common/js/scripts.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="/jquery.scroll_event/lib/js/scripts.js"
-    ></script>
+  <!-- simplebar Start -->
+  <link rel="stylesheet" href="/simplebar/packages/simplebar/dist/simplebar.css" type="text/css" media="all">
+  <script defer src="/simplebar/packages/simplebar/dist/simplebar.js"></script>
+  <!-- simplebar End -->
 
-    <script
-      type="text/javascript"
-      src="../../lib/common/js/scripts.js"
-    ></script>
-  </body>
+  <script defer src="/jquery.common/js/jquery.js"></script>
+  <script defer src="../../lib/common/js/jquery.organizeContentsArray.js"></script>
+  <script defer src="../../lib/common/js/jquery.HamburgerMenu.js"></script>
+  <script defer src="/jquery-smooth-scroll/jquery.smooth-scroll.js"></script>
+  <script defer src="/jquery.accordion/lib/common/js/scripts.js"></script>
+  <script defer src="/jquery.scroll_event/lib/js/scripts.js"></script>
+
+  <script defer src="../../lib/common/js/scripts.js"></script>
+</body>
+
 </html>
